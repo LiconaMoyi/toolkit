@@ -12,14 +12,40 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools sql statemachine)
 
 set(TS_FILES toolkit_zh_CN.ts)
 
 set(PROJECT_SOURCES
         main.cpp
-        widget.cpp
         widget.h
+        widget.cpp
+        qtcookbook.h
+        qtcookbook.cpp
+        moyi-ui/lib/moyitheme.h
+        moyi-ui/lib/moyitheme_p.h
+        moyi-ui/lib/moyitheme.cpp
+        moyi-ui/lib/moyistyle.h
+        moyi-ui/lib/moyistyle.cpp
+        moyi-ui/lib/moyistyle_p.h
+        moyi-ui/lib/moyioverlaywidget.h
+        moyi-ui/lib/moyioverlaywidget.cpp
+        moyi-ui/lib/moyistatetransitionevent.h
+        moyi-ui/lib/moyistatetransition.h
+        moyi-ui/lib/moyistatetransition.cpp
+        moyi-ui/moyislider_p.h
+        moyi-ui/moyislider_internal.h
+        moyi-ui/moyislider_internal.cpp
+        moyi-ui/moyislider.h
+        moyi-ui/moyislider.cpp
+        moyi-ui/moyicircularprogress_p.h
+        moyi-ui/moyicircularprogress_internal.h
+        moyi-ui/moyicircularprogress_internal.cpp
+        moyi-ui/moyicircularprogress.h
+        moyi-ui/moyicircularprogress.cpp
+        moyi-ui/moyipushbutton.h
+        moyi-ui/moyipushbutton.cpp
+        image.qrc
         ${TS_FILES}
 )
 
@@ -51,6 +77,8 @@ else()
 endif()
 
 target_link_libraries(toolkit PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(toolkit PRIVATE Qt${QT_VERSION_MAJOR}::Sql)
+target_link_libraries(toolkit PRIVATE Qt${QT_VERSION_MAJOR}::StateMachine)
 
 set_target_properties(toolkit PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

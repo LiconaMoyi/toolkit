@@ -4,6 +4,11 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QPushButton>
+#include <QSlider>
+#include "moyi-ui/moyislider.h"
+#include "moyi-ui/moyicircularprogress.h"
+
+#include "qtcookbook.h"
 
 class Widget : public QWidget
 {
@@ -13,10 +18,21 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 private:
-    QPushButton *btnTest;
+    // base content
+    QPushButton *btnQtInfo;
+    QPushButton *btnCodeGen;
+    QPushButton *btnBase;
+    QPushButton *btnDataStorage;
+    MoyiSlider       *const m_slider;
+    MoyiCircularProgress *const m_circular_progress;
+
+    QtCookBook *const qtCookBook;
+
     void initUi();
     void initSlot();
 private slots:
-    void btnTestSlots();
+    void btnQtInfoSlots();
+    void btnBaseSlots();
+    void btnDataStorageSlots();
 };
 #endif // WIDGET_H
